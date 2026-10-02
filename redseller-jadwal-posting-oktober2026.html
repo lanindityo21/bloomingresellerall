@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jadwal Posting Blooming Property — RedSeller Oktober 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+:root{--red:#E8001D;--gold:#F5A800;--ink:#111318;--muted:#6C7080;--bg:#EEEEF3;--white:#fff;--line:#E2E4EE;--card:#F8F9FC;--green:#0A7B40;--gline:#8EE0B4;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ink);font-size:14px;-webkit-tap-highlight-color:transparent;}
+/* HERO */
+.hero{background:var(--ink);padding:32px 20px 26px;text-align:center;position:relative;overflow:hidden;}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 80% 15%,rgba(232,0,29,.2),transparent);}
+.badge{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:12px;position:relative;z-index:1;}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,8vw,52px);line-height:1;color:#fff;margin-bottom:5px;position:relative;z-index:1;}
+h1 span{color:var(--gold);}
+.hero-sub{font-size:12px;color:rgba(255,255,255,.55);margin-bottom:16px;position:relative;z-index:1;}
+.pill-row{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;position:relative;z-index:1;}
+.pill{font-size:11px;font-weight:600;padding:4px 11px;border-radius:20px;border:1px solid;}
+.pw{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.85);}
+.pr{background:rgba(232,0,29,.25);border-color:rgba(232,0,29,.5);color:#FF9AA2;}
+.pg{background:rgba(245,168,0,.18);border-color:rgba(245,168,0,.4);color:var(--gold);}
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);background:var(--red);}
+.st{padding:10px 5px;text-align:center;border-right:1px solid rgba(255,255,255,.18);}
+.st:last-child{border-right:none;}
+.stn{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--gold);line-height:1;}
+.stl{font-size:9px;color:rgba(255,255,255,.75);margin-top:2px;line-height:1.2;}
+/* NAV */
+.main-nav{background:var(--white);border-bottom:1px solid var(--line);display:flex;padding:8px 14px;gap:6px;position:sticky;top:0;z-index:90;overflow-x:auto;}
+.main-nav::-webkit-scrollbar{display:none;}
+.mnav{flex-shrink:0;font-size:13px;font-weight:600;padding:7px 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);cursor:pointer;font-family:inherit;}
+.mnav.active{background:var(--red);color:#fff;border-color:var(--red);}
+.msec{display:none;}
+.msec.active{display:block;}
+/* PAGE */
+.page{max-width:720px;margin:0 auto;padding:14px 12px 40px;}
+.ctrl-row{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
+.ctrl-btn{font-size:12px;padding:5px 12px;border-radius:7px;border:1px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;font-family:inherit;}
+.ctrl-btn:hover{background:var(--card);}
+.week-sep{display:flex;align-items:center;gap:8px;margin:16px 0 8px;}
+.ws-line{flex:1;height:1px;background:var(--line);}
+.ws-txt{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+/* DAY CARD */
+.dc{border:1px solid var(--line);border-radius:12px;margin-bottom:7px;overflow:hidden;background:var(--white);}
+.dc.weekend{border-color:#FACF30;box-shadow:0 0 0 1px rgba(250,207,48,.25);}
+.dc-head{display:flex;align-items:center;gap:7px;padding:10px 12px;cursor:pointer;user-select:none;}
+.dc-num{font-size:11px;font-weight:700;background:var(--card);border:1px solid var(--line);color:var(--muted);padding:2px 8px;border-radius:5px;flex-shrink:0;white-space:nowrap;}
+.dc.weekend .dc-num{background:#FFF9E0;border-color:#FACF30;color:#7A5700;}
+.dc-date{font-size:11px;color:var(--muted);flex-shrink:0;white-space:nowrap;}
+.dc-city{font-size:13px;font-weight:700;color:var(--ink);flex:1;min-width:0;}
+.wknd-badge{flex-shrink:0;font-size:10px;font-weight:700;background:#FFF3C0;color:#7A5700;border:1px solid #FACF30;padding:2px 8px;border-radius:5px;white-space:nowrap;}
+.chev{font-size:12px;color:var(--muted);transition:transform .2s;flex-shrink:0;}
+.chev.open{transform:rotate(180deg);}
+.dc-body{display:none;border-top:1px solid var(--line);}
+.dc-body.open{display:block;}
+/* HOTEL ROWS */
+.hotel-list{display:flex;flex-direction:column;gap:5px;padding:10px 11px;}
+.hr{border:1px solid;border-radius:9px;display:flex;align-items:flex-start;gap:9px;padding:10px 11px;}
+.hr-num{font-family:'Bebas Neue',sans-serif;font-size:22px;line-height:1;flex-shrink:0;width:16px;text-align:center;margin-top:1px;}
+.hr-body{flex:1;min-width:0;}
+.hr-top{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:4px;align-items:center;}
+.hr-brand{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;}
+.hr-tipe{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;}
+.hr-name{font-size:12px;font-weight:700;line-height:1.35;margin-bottom:3px;}
+.hr-meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
+.hr-rooms{font-size:11px;color:var(--muted);}
+.hr-date{font-size:10px;color:var(--muted);}
+/* Brand colors */
+.brd{background:#FEF0F2;border-color:#F3BCC4;}.brd .hr-num{color:#B8001A;}.brd .hr-name{color:#7A0010;}.brd .hr-brand{background:#FAD2D8;color:#7A0010;}
+.buv{background:#F2F0FE;border-color:#CBC6F5;}.buv .hr-num{color:#5B46C5;}.buv .hr-name{color:#362887;}.buv .hr-brand{background:#DCD9F8;color:#362887;}
+.blv{background:#FEF5E5;border-color:#F4CF80;}.blv .hr-num{color:#A86800;}.blv .hr-name{color:#6A4000;}.blv .hr-brand{background:#FAE09E;color:#6A4000;}
+.brp{background:#ECFAF4;border-color:#A5DEBA;}.brp .hr-num{color:#0A7B40;}.brp .hr-name{color:#065528;}.brp .hr-brand{background:#BEEFD5;color:#065528;}
+.bsn{background:#EAF2FE;border-color:#AECDF8;}.bsn .hr-num{color:#1350A2;}.bsn .hr-name{color:#0C367A;}.bsn .hr-brand{background:#C5DDFA;color:#0C367A;}
+.tsy{background:#ECFAF4;color:#0A7B40;}
+.tns{background:var(--card);color:var(--muted);}
+/* FOOTER */
+.dc-foot{padding:0 11px 10px;display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+.tip-box{flex:1;background:var(--card);border-radius:7px;padding:7px 9px;font-size:11px;color:var(--muted);line-height:1.5;min-width:0;}
+.cp-btn{flex-shrink:0;font-size:11px;padding:6px 12px;border-radius:7px;border:1px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:4px;font-family:inherit;white-space:nowrap;}
+.cp-btn:hover{background:var(--card);}
+.cp-btn.ok{color:var(--green);border-color:var(--gline);}
+/* WA SECTION */
+.wa-page{max-width:720px;margin:0 auto;padding:14px 12px 40px;}
+.wa-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.wt{font-size:12px;padding:5px 12px;border-radius:20px;border:1px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;font-family:inherit;white-space:nowrap;}
+.wt.active{background:var(--red);color:#fff;border-color:var(--red);}
+.wp{display:none;}
+.wp.active{display:block;}
+.wa-stack{display:flex;flex-direction:column;gap:14px;}
+.wb{display:flex;flex-direction:column;}
+.wblabel{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px;color:var(--red);}
+.wblabel.pagi{color:#B07010;}
+.wblabel.sore{color:#1348A0;}
+.wblabel.malam{color:#5540B5;}
+.bubble{background:#E9FBE8;border:1px solid #BDE5BC;border-radius:0 12px 12px 12px;padding:12px 14px;font-size:13px;line-height:1.75;color:#111;white-space:pre-wrap;word-break:break-word;position:relative;}
+.bubble::before{content:'';position:absolute;top:0;left:-8px;border-top:8px solid #BDE5BC;border-left:8px solid transparent;}
+.wa-cp{margin-top:6px;font-size:11px;padding:5px 12px;border-radius:6px;border:1px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;display:inline-flex;align-items:center;gap:4px;font-family:inherit;}
+.wa-cp:hover{background:var(--card);}
+.wa-cp.ok{color:var(--green);border-color:var(--gline);}
+.wa-note{margin-top:5px;font-size:11px;color:var(--muted);padding:6px 9px;background:var(--card);border-radius:6px;border:1px solid var(--line);}
+.dprow{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px;}
+.dpick{font-size:11px;padding:3px 9px;border-radius:6px;border:1px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;font-family:inherit;white-space:nowrap;}
+.dpick.active{background:var(--red);color:#fff;border-color:var(--red);}
+.dpick.wknd{border-color:#FACF30;color:#7A5700;}
+.dpick.wknd.active{background:#7A5700;border-color:#7A5700;color:#fff;}
+.dpanel{display:none;}
+.dpanel.active{display:block;}
+.dpanel-head{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:10px;padding:6px 0 4px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">🌸 Blooming Property · Oktober 2026</div>
+  <h1>4 HOTEL PER HARI<br><span>KOTA SAMA BERURUTAN</span></h1>
+  <p class="hero-sub">126 Properti Baru · 2 Oktober – 31 Oktober 2026 · Weekend = Kota Wisata Favorit</p>
+  <div class="pill-row">
+    <span class="pill pw">30 Hari Posting</span>
+    <span class="pill pg">4 Hotel/Hari</span>
+    <span class="pill pr">126 Hotel Blooming</span>
+    <span class="pill pw">Kota Sama Tiap Hari</span>
+    <span class="pill pw">10 Weekend Wisata</span>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="st"><div class="stn">30</div><div class="stl">Hari Posting</div></div>
+  <div class="st"><div class="stn">126</div><div class="stl">Blooming Hotel</div></div>
+  <div class="st"><div class="stn">5</div><div class="stl">Brand</div></div>
+  <div class="st"><div class="stn">28%</div><div class="stl">Syariah</div></div>
+  <div class="st"><div class="stn">50+</div><div class="stl">Kota di Indonesia</div></div>
+</div>
+
+<div class="main-nav">
+  <button class="mnav active" id="mn-jadwal" onclick="switchMain('jadwal')">📅 Jadwal Hotel</button>
+  <button class="mnav" id="mn-wa" onclick="switchMain('wa')">💬 WA Blast Grup</button>
+</div>
+
+<div class="msec active" id="msec-jadwal">
+  <div class="page">
+    <div class="ctrl-row">
+      <button class="ctrl-btn" onclick="toggleAll(true)">Buka semua</button>
+      <button class="ctrl-btn" onclick="toggleAll(false)">Tutup semua</button>
+    </div>
+    <div id="jadwal-cont"></div>
+  </div>
+</div>
+
+<div class="msec" id="msec-wa">
+  <div class="wa-page">
+    <div class="wa-tabs">
+      <button class="wt active" onclick="switchWa('pembuka',this)">📢 Pembuka Program</button>
+      <button class="wt" onclick="switchWa('harian',this)">📅 Tugas Harian</button>
+    </div>
+    <div class="wp active" id="wp-pembuka"><div class="wa-stack" id="ws-pembuka"></div></div>
+    <div class="wp" id="wp-harian">
+      <div class="dprow" id="dprow"></div>
+      <div id="dpcont"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const BC={'RedDoorz':'brd','Urbanview':'buv','The Lavana':'blv','RedPartner':'brp','Sans':'bsn'};
+const BL={'RedDoorz':'RedDoorz','Urbanview':'Urbanview','The Lavana':'The Lavana','RedPartner':'RedPartner/Mitra','Sans':'Sans Hotel'};
+
+// ── JADWAL 30 HARI OKTOBER 2026 ──
+// Aturan: 4 hotel per hari, KOTA SAMA berurutan
+// Weekend (Jumat & Sabtu) = kota wisata favorit
+const schedule = [
+  // MINGGU 1: 2–5 Okt
+  {day:1, date:"Jumat, 02 Okt", isWknd:true, city:"Yogyakarta", cityDesc:"Kota Wisata Budaya No.1", theme:"🌟 Weekend Perdana — Yogyakarta",
+   hotels:[
+    {name:"Vibes Giory Yogyakarta by SANS Hotel",brand:"Sans",rooms:37,tipe:"NON SYARIAH",bookable:"2026-09-25"},
+    {name:"Urbanview Hotel Pondok Helomi near Stadion Maguwo",brand:"Urbanview",rooms:22,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+    {name:"RedDoorz near Taman Merapi Yogyakarta",brand:"RedDoorz",rooms:18,tipe:"NON SYARIAH",bookable:"2026-07-30"},
+    {name:"La Rish Home Syariah Gejayan Yogyakarta RedPartner",brand:"RedPartner",rooms:14,tipe:"SYARIAH",bookable:"2026-07-30"},
+   ]},
+  {day:2, date:"Sabtu, 03 Okt", isWknd:true, city:"Yogyakarta", cityDesc:"Kota Wisata Budaya No.1", theme:"🌟 Yogyakarta Weekend — Sesi 2",
+   hotels:[
+    {name:"RedDoorz @ Hotel Pulung Prawirotaman",brand:"RedDoorz",rooms:18,tipe:"NON SYARIAH",bookable:"2026-08-01"},
+    {name:"RedDoorz near Tugu Yogyakarta 3",brand:"RedDoorz",rooms:17,tipe:"NON SYARIAH",bookable:"2026-08-31"},
+    {name:"The Lavana Kampoeng Joglo Boutique Hotel and Villa Yogyakarta",brand:"The Lavana",rooms:7,tipe:"NON SYARIAH",bookable:"2026-08-31"},
+    {name:"SANS Stay Tugu Malioboro",brand:"Sans",rooms:4,tipe:"NON SYARIAH",bookable:"2026-09-30"},
+   ]},
+  {day:3, date:"Minggu, 04 Okt", isWknd:false, city:"Batu", cityDesc:"Kota Wisata Jawa Timur", theme:"Batu — Kota Apel & Wisata Alam",
+   hotels:[
+    {name:"Sans Elite Emerald Hotel Batu",brand:"Sans",rooms:98,tipe:"NON SYARIAH",bookable:"2026-08-30"},
+    {name:"Urbanview Villa Bukit Panderman",brand:"Urbanview",rooms:11,tipe:"NON SYARIAH",bookable:"2026-07-30"},
+    {name:"Harwin Homestay Batu RedPartner",brand:"RedPartner",rooms:6,tipe:"NON SYARIAH",bookable:"2026-09-29"},
+    {name:"The Lavana Signature Villa Gauri Batu",brand:"The Lavana",rooms:1,tipe:"NON SYARIAH",bookable:"2026-09-30"},
+   ]},
+  {day:4, date:"Senin, 05 Okt", isWknd:false, city:"Jakarta", cityDesc:"Ibu Kota — Pusat Bisnis & Wisata", theme:"Jakarta — Ibu Kota",
+   hotels:[
+    {name:"Arcadia Rooms Mangga Besar RedPartner",brand:"RedPartner",rooms:80,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+    {name:"New J&B Room Utan Kayu RedPartner",brand:"RedPartner",rooms:48,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+    {name:"SANS Vibes Arcadia Regency Mangga Besar",brand:"Sans",rooms:31,tipe:"NON SYARIAH",bookable:"2026-08-31"},
+    {name:"SANS Stay Kemang",brand:"Sans",rooms:22,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+   ]},
+  {day:5, date:"Selasa, 06 Okt", isWknd:false, city:"Jakarta", cityDesc:"Ibu Kota — Pusat Bisnis & Wisata", theme:"Jakarta — Lanjutan",
+   hotels:[
+    {name:"Puri Lotus Cilandak RedPartner",brand:"RedPartner",rooms:18,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+    {name:"Atmawidjaja House Syariah RedPartner",brand:"RedPartner",rooms:15,tipe:"SYARIAH",bookable:"2026-09-30"},
+    {name:"RedDoorz near Green Sedayu Mall",brand:"RedDoorz",rooms:10,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+    {name:"RedDoorz Near LRT Taman Mini Jakarta",brand:"RedDoorz",rooms:9,tipe:"NON SYARIAH",bookable:"2026-09-30"},
+   ]},
+  {day:6, date:"Rabu, 07 Okt", isWknd:false, city:"Bogor", cityDesc:"Kota Hujan — Puncak & Cisarua", theme:"Bogor — Kota Hujan & Puncak",
+   hotels:[
+    {name:"The Lavana Syariah Seulawah Glamping Hills Bogor",brand:"The Lavana",rooms:19,tipe:"SYARIAH",bookable:"2026-08-31"},
+    {name:"Urbanview Hotel Kalaras & Mini Zoo Cijeruk Bogor",brand:"Urbanview",rooms:17,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+    {name:"RedDoorz Plus @ Hotel Griya Sakinah Cisarua Puncak",brand:"RedDoorz",rooms:15,tipe:"NON SYARIAH",bookable:"2026-07-08"},
+    {name:"Taman Cibinong 2 RedPartner",brand:"RedPartner",rooms:12,tipe:"NON SYARIAH",bookable:"2026-09-30"},
+   ]},
+  {day:7, date:"Kamis, 08 Okt", isWknd:false, city:"Bandung", cityDesc:"Kota Kembang — Fashion & Kuliner", theme:"Bandung — Kota Kembang",
+   hotels:[
+    {name:"RedDoorz Syariah near Alun Alun Kota Bandung",brand:"RedDoorz",rooms:20,tipe:"SYARIAH",bookable:"2026-07-31"},
+    {name:"Urbanview Villa Omah Obah Dago Bandung",brand:"Urbanview",rooms:11,tipe:"NON SYARIAH",bookable:"2026-08-15"},
+    {name:"RedDoorz Resort @ Rompok Cileunca Pangalengan",brand:"RedDoorz",rooms:10,tipe:"NON SYARIAH",bookable:"2026-07-22"},
+    {name:"RedDoorz @ Kayome Dago Bandung",brand:"RedDoorz",rooms:10,tipe:"NON SYARIAH",bookable:"2026-07-24"},
+   ]},
+  // MINGGU 2: 9–11 Okt
+  {day:8, date:"Jumat, 09 Okt", isWknd:true, city:"Bali", cityDesc:"Pulau Dewata — Destinasi Wisata Dunia", theme:"🌟 Weekend — Bali & Lombok",
+   hotels:[
+    {name:"The Lavana Hotel Florida Kuta Mandalika",brand:"The Lavana",rooms:7,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+    {name:"Urbanview Hotel Mutiara Mataram Lombok",brand:"Urbanview",rooms:35,tipe:"NON SYARIAH",bookable:"2026-09-16"},
+    {name:"Urbanview Hotel Syariah UIN Mataram Lombok",brand:"Urbanview",rooms:44,tipe:"SYARIAH",bookable:"2026-09-30"},
+    {name:"Siama Garden II Raya Senggigi RedPartner",brand:"RedPartner",rooms:6,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+   ]},
+  {day:9, date:"Sabtu, 10 Okt", isWknd:true, city:"Solo", cityDesc:"Kota Budaya Jawa — Batik & Kuliner", theme:"🌟 Weekend — Solo Kota Budaya",
+   hotels:[
+    {name:"SANS Stay Sheva Solo",brand:"Sans",rooms:29,tipe:"NON SYARIAH",bookable:"2026-08-31"},
+    {name:"Urbanview Solo Tiara Hotel",brand:"Urbanview",rooms:20,tipe:"NON SYARIAH",bookable:"2026-08-31"},
+    {name:"3S Guesthouse near UNS Solo RedPartner",brand:"RedPartner",rooms:30,tipe:"NON SYARIAH",bookable:"2026-08-31"},
+    {name:"RedDoorz Syariah 358 Windan near RS Orthopedi Solo",brand:"RedDoorz",rooms:9,tipe:"SYARIAH",bookable:"2026-08-31"},
+   ]},
+  {day:10, date:"Minggu, 11 Okt", isWknd:false, city:"Malang", cityDesc:"Paris of Java — Wisata & Kuliner", theme:"Malang — Paris of Java",
+   hotels:[
+    {name:"Urbanview Guest House Amalia Malang",brand:"Urbanview",rooms:22,tipe:"NON SYARIAH",bookable:"2026-09-29"},
+    {name:"RedDoorz @ Malang City Center",brand:"RedDoorz",rooms:18,tipe:"NON SYARIAH",bookable:"2026-07-02"},
+    {name:"Urbanview Syariah Griya Sekar Malang",brand:"Urbanview",rooms:15,tipe:"SYARIAH",bookable:"2026-07-30"},
+    {name:"RedDoorz Syariah @ Emas 23 Blimbing Malang",brand:"RedDoorz",rooms:10,tipe:"SYARIAH",bookable:"2026-09-28"},
+   ]},
+  {day:11, date:"Senin, 12 Okt", isWknd:false, city:"Semarang", cityDesc:"Kota Atlas — Heritage & Kuliner", theme:"Semarang — Kota Atlas",
+   hotels:[
+    {name:"Urbanview Hotel Grand Mundu Semarang",brand:"Urbanview",rooms:30,tipe:"NON SYARIAH",bookable:"2026-09-01"},
+    {name:"Urbanview Ventura Residence near Kota Lama Semarang",brand:"Urbanview",rooms:12,tipe:"NON SYARIAH",bookable:"2026-08-31"},
+    {name:"RedDoorz Syariah near UNIMUS 3 Semarang",brand:"RedDoorz",rooms:10,tipe:"SYARIAH",bookable:"2026-08-22"},
+    {name:"Khatulistiwa Camp Ground Syariah Bandungan by The Lavana",brand:"The Lavana",rooms:4,tipe:"SYARIAH",bookable:"2026-09-28"},
+   ]},
+  {day:12, date:"Selasa, 13 Okt", isWknd:false, city:"Sukabumi", cityDesc:"Pantai Ujunggenteng & Alam Ciletuh", theme:"Sukabumi — Pantai & Alam",
+   hotels:[
+    {name:"RedDoorz @ Gor Icuk Sugiarto Sukabumi",brand:"RedDoorz",rooms:15,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+    {name:"RedDoorz @ Pondok Alief 2 Ujunggenteng Sukabumi",brand:"RedDoorz",rooms:15,tipe:"NON SYARIAH",bookable:"2026-09-30"},
+    {name:"RedDoorz @ Penginapan Riansah Ujunggenteng Sukabumi",brand:"RedDoorz",rooms:10,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+    {name:"RedDoorz @ Villa Asella Ciletuh Sukabumi",brand:"RedDoorz",rooms:10,tipe:"NON SYARIAH",bookable:"2026-09-29"},
+   ]},
+  {day:13, date:"Rabu, 14 Okt", isWknd:false, city:"Banyumas", cityDesc:"Purwokerto — Kota Satria", theme:"Banyumas — Kota Satria",
+   hotels:[
+    {name:"Urbanview Purwokerto City Hotel near UNSOED",brand:"Urbanview",rooms:22,tipe:"NON SYARIAH",bookable:"2026-08-09"},
+    {name:"Urbanview Lunar Hotel near Gor Satria Purwokerto",brand:"Urbanview",rooms:15,tipe:"NON SYARIAH",bookable:"2026-09-22"},
+    {name:"Kika Pool Villa Purwokerto by The Lavana",brand:"The Lavana",rooms:1,tipe:"NON SYARIAH",bookable:"2026-08-31"},
+    {name:"The Lavana Signature Villa Samafa Purwokerto",brand:"The Lavana",rooms:1,tipe:"NON SYARIAH",bookable:"2026-09-30"},
+   ]},
+  {day:14, date:"Kamis, 15 Okt", isWknd:false, city:"Batam", cityDesc:"Kota Industri & Pariwisata Kepri", theme:"Batam — Gerbang Kepulauan Riau",
+   hotels:[
+    {name:"Urbanview Hotel New Land near Harbour Bay Batam",brand:"Urbanview",rooms:21,tipe:"NON SYARIAH",bookable:"2026-08-31"},
+    {name:"Urbanview Hotel Get Inn Botania Batam",brand:"Urbanview",rooms:17,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+    {name:"Urbanview Hotel Aesthetic Batam",brand:"Urbanview",rooms:11,tipe:"NON SYARIAH",bookable:"2026-09-30"},
+    {name:"Urbanview Hotel near Simpang Lagoi Bintan",brand:"Urbanview",rooms:7,tipe:"NON SYARIAH",bookable:"2026-08-30"},
+   ]},
+  // MINGGU 3: 16–18 Okt
+  {day:15, date:"Jumat, 16 Okt", isWknd:true, city:"Pangandaran", cityDesc:"Pantai Selatan Jawa Barat", theme:"🌟 Weekend — Pangandaran Pantai Selatan",
+   hotels:[
+    {name:"RedDoorz @ Savana Resort Pangandaran",brand:"RedDoorz",rooms:20,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+    {name:"RedDoorz @ Bintang Labuan Batukaras Pangandaran",brand:"RedDoorz",rooms:14,tipe:"NON SYARIAH",bookable:"2026-08-31"},
+    {name:"RedDoorz @ Pondok Kanopi Pantai Barat Pangandaran",brand:"RedDoorz",rooms:10,tipe:"NON SYARIAH",bookable:"2026-08-31"},
+    {name:"Urbanview Villa Omah Obah Dago Bandung",brand:"Urbanview",rooms:11,tipe:"NON SYARIAH",bookable:"2026-08-15"},
+   ]},
+  {day:16, date:"Sabtu, 17 Okt", isWknd:true, city:"Wonosobo", cityDesc:"Dieng Plateau — Hidden Gem Jawa Tengah", theme:"🌟 Weekend — Wonosobo & Dieng Plateau",
+   hotels:[
+    {name:"Kings Hotel Dieng RedPartner",brand:"RedPartner",rooms:10,tipe:"NON SYARIAH",bookable:"2026-07-23"},
+    {name:"The Lavana Villa Bintang Sikunir",brand:"The Lavana",rooms:10,tipe:"NON SYARIAH",bookable:"2026-07-30"},
+    {name:"Taman Syailendra Cottage Dieng RedPartner",brand:"RedPartner",rooms:11,tipe:"NON SYARIAH",bookable:"2026-08-31"},
+    {name:"Urbanview Syariah D'Living Gajah Mada Purwodadi",brand:"Urbanview",rooms:25,tipe:"SYARIAH",bookable:"2026-09-23"},
+   ]},
+  {day:17, date:"Minggu, 18 Okt", isWknd:false, city:"Karanganyar", cityDesc:"Karanganyar — Tawangmangu & Kebun Teh", theme:"Karanganyar — Tawangmangu & Kebun Teh",
+   hotels:[
+    {name:"3S Guesthouse near UNS Solo RedPartner",brand:"RedPartner",rooms:30,tipe:"NON SYARIAH",bookable:"2026-08-31"},
+    {name:"Urbanview Mamio House Syariah near Exit Tol Klodran Solo",brand:"Urbanview",rooms:14,tipe:"SYARIAH",bookable:"2026-08-18"},
+    {name:"RedDoorz Syariah near Exit Tol Ngemplak Solo",brand:"RedDoorz",rooms:8,tipe:"SYARIAH",bookable:"2026-09-30"},
+    {name:"Urbanview Cottage Griyo Marto Klaten Kota",brand:"Urbanview",rooms:14,tipe:"NON SYARIAH",bookable:"2026-09-18"},
+   ]},
+  {day:18, date:"Senin, 19 Okt", isWknd:false, city:"Medan", cityDesc:"Kota Terbesar Sumatera", theme:"Medan — Kota Terbesar Sumatera",
+   hotels:[
+    {name:"Hotel Bumi Malaya RedPartner",brand:"RedPartner",rooms:54,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+    {name:"Urbanview Hotel Star Pematangsiantar",brand:"Urbanview",rooms:13,tipe:"NON SYARIAH",bookable:"2026-09-30"},
+    {name:"RedDoorz @ Penginapan Fergael",brand:"RedDoorz",rooms:12,tipe:"NON SYARIAH",bookable:"2026-09-30"},
+    {name:"RedDoorz near Pantai Indah Sialang Buah",brand:"RedDoorz",rooms:12,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+   ]},
+  {day:19, date:"Selasa, 20 Okt", isWknd:false, city:"Lampung", cityDesc:"Gerbang Sumatera — Way Kambas & Pantai", theme:"Lampung — Gerbang Sumatera",
+   hotels:[
+    {name:"Urbanview Hotel Grand Luxury Lampung",brand:"Urbanview",rooms:22,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+    {name:"RedDoorz Syariah @ Homestay Kalianda",brand:"RedDoorz",rooms:10,tipe:"SYARIAH",bookable:"2026-09-30"},
+    {name:"RedDoorz Plus @ RS Airan Raya Lampung",brand:"RedDoorz",rooms:10,tipe:"NON SYARIAH",bookable:"2026-09-30"},
+    {name:"Urbanview Syariah Hotel Horas Palopo",brand:"Urbanview",rooms:19,tipe:"SYARIAH",bookable:"2026-07-31"},
+   ]},
+  {day:20, date:"Rabu, 21 Okt", isWknd:false, city:"Makassar", cityDesc:"Kota Daeng — Gerbang Indonesia Timur", theme:"Makassar — Gerbang Indonesia Timur",
+   hotels:[
+    {name:"RedDoorz @ Ruby Residence Tanjung Bunga Makassar",brand:"RedDoorz",rooms:11,tipe:"NON SYARIAH",bookable:"2026-09-20"},
+    {name:"RedDoorz near Nipah Mall Makassar",brand:"RedDoorz",rooms:15,tipe:"NON SYARIAH",bookable:"2026-09-30"},
+    {name:"RedDoorz @ Almuhajir Homestay Kendari",brand:"RedDoorz",rooms:15,tipe:"NON SYARIAH",bookable:"2026-08-31"},
+    {name:"RedDoorz near Juwata Airport 4 Tarakan",brand:"RedDoorz",rooms:16,tipe:"NON SYARIAH",bookable:"2026-09-23"},
+   ]},
+  {day:21, date:"Kamis, 22 Okt", isWknd:false, city:"Yogyakarta", cityDesc:"Kota Wisata Budaya No.1", theme:"Yogyakarta — Sesi Tengah Bulan",
+   hotels:[
+    {name:"RedDoorz @ Poerto Lemon Guesthouse Alun Alun Wonosari",brand:"RedDoorz",rooms:10,tipe:"NON SYARIAH",bookable:"2026-07-30"},
+    {name:"Aliya Co Living near Stadion Mandala Krida RedPartner",brand:"RedPartner",rooms:11,tipe:"NON SYARIAH",bookable:"2026-08-14"},
+    {name:"The Signature Living",brand:"RedPartner",rooms:10,tipe:"NON SYARIAH",bookable:"2026-08-20"},
+    {name:"The Lavana Omah Putih Malioboro Tugu Yogyakarta",brand:"The Lavana",rooms:1,tipe:"NON SYARIAH",bookable:"2026-09-28"},
+   ]},
+  // MINGGU 4: 23–25 Okt
+  {day:22, date:"Jumat, 23 Okt", isWknd:true, city:"Bandung", cityDesc:"Kota Kembang — Lembang & Dago", theme:"🌟 Weekend — Bandung Lembang & Dago",
+   hotels:[
+    {name:"RedDoorz @ Masagena Buah Batu Bandung",brand:"RedDoorz",rooms:10,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+    {name:"RedDoorz @ Dago Griya Aspen Bandung",brand:"RedDoorz",rooms:10,tipe:"NON SYARIAH",bookable:"2026-09-18"},
+    {name:"The Lavana Premium Villa QFA Lembang",brand:"The Lavana",rooms:1,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+    {name:"The Lavana Signature Villa Putih",brand:"The Lavana",rooms:1,tipe:"NON SYARIAH",bookable:"2026-09-28"},
+   ]},
+  {day:23, date:"Sabtu, 24 Okt", isWknd:true, city:"Bogor", cityDesc:"Kota Hujan — Glamping & Wisata Alam", theme:"🌟 Weekend — Bogor Glamping & Alam",
+   hotels:[
+    {name:"Villa Paramadina by The Lavana",brand:"The Lavana",rooms:3,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+    {name:"The Lavana Premium di Alaya Sentul",brand:"The Lavana",rooms:1,tipe:"NON SYARIAH",bookable:"2026-07-30"},
+    {name:"Villa Keneae by The Lavana",brand:"The Lavana",rooms:1,tipe:"NON SYARIAH",bookable:"2026-09-30"},
+    {name:"RedDoorz @ Derawan Beach Cottage",brand:"RedDoorz",rooms:20,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+   ]},
+  {day:24, date:"Minggu, 25 Okt", isWknd:false, city:"Yogyakarta", cityDesc:"Kota Wisata Budaya No.1", theme:"Yogyakarta — Syariah & Heritage",
+   hotels:[
+    {name:"Griya Saira Syariah Kaliurang RedPartner",brand:"RedPartner",rooms:6,tipe:"SYARIAH",bookable:"2026-08-31"},
+    {name:"The Lavana Signature Mazovia Villa Yogyakarta",brand:"The Lavana",rooms:3,tipe:"NON SYARIAH",bookable:"2026-08-31"},
+    {name:"Baku Living by The Lavana Signature",brand:"The Lavana",rooms:1,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+    {name:"Villa Sambisari by The Lavana Signature",brand:"The Lavana",rooms:1,tipe:"NON SYARIAH",bookable:"2026-08-31"},
+   ]},
+  {day:25, date:"Senin, 26 Okt", isWknd:false, city:"Madiun", cityDesc:"Kota Pendekar — Jawa Timur", theme:"Madiun & Kediri — Kota Pendekar",
+   hotels:[
+    {name:"SANS Vibes Nine Eleven Madiun",brand:"Sans",rooms:23,tipe:"NON SYARIAH",bookable:"2026-08-30"},
+    {name:"RedDoorz Syariah near PSC Madiun",brand:"RedDoorz",rooms:14,tipe:"SYARIAH",bookable:"2026-09-21"},
+    {name:"SANS Vibes Pertiwi Kampung Inggris Pare",brand:"Sans",rooms:24,tipe:"NON SYARIAH",bookable:"2026-09-29"},
+    {name:"Urbanview Bangsal Mojokerto",brand:"Urbanview",rooms:17,tipe:"NON SYARIAH",bookable:"2026-07-02"},
+   ]},
+  {day:26, date:"Selasa, 27 Okt", isWknd:false, city:"Pontianak", cityDesc:"Kota Khatulistiwa — Kalimantan Barat", theme:"Pontianak & Kalimantan",
+   hotels:[
+    {name:"Rumah Syariah Dempo RedPartner",brand:"RedPartner",rooms:40,tipe:"SYARIAH",bookable:"2026-08-31"},
+    {name:"RedDoorz @ Derawan Beach Cottage",brand:"RedDoorz",rooms:20,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+    {name:"RedDoorz Syariah near Jalan Sumantri Jambi",brand:"RedDoorz",rooms:10,tipe:"SYARIAH",bookable:"2026-08-31"},
+    {name:"RedDoorz @ Guest house Home Syariah",brand:"RedDoorz",rooms:13,tipe:"SYARIAH",bookable:"2026-09-28"},
+   ]},
+  {day:27, date:"Rabu, 28 Okt", isWknd:false, city:"Pasuruan", cityDesc:"Pasuruan & Tulungagung — Jawa Timur", theme:"Pasuruan & Tulungagung — Jawa Timur",
+   hotels:[
+    {name:"Green Kanca Syariah near Stasiun Pasuruan RedPartner",brand:"RedPartner",rooms:10,tipe:"SYARIAH",bookable:"2026-09-28"},
+    {name:"RedDoorz Syariah @ Jl Raya Pasuruan",brand:"RedDoorz",rooms:6,tipe:"SYARIAH",bookable:"2026-07-28"},
+    {name:"RedDoorz Syariah @ Khaleza near Alun Alun Tulungagung",brand:"RedDoorz",rooms:11,tipe:"SYARIAH",bookable:"2026-07-21"},
+    {name:"RedDoorz @ Sirih Gading Guest House Tulungagung",brand:"RedDoorz",rooms:8,tipe:"NON SYARIAH",bookable:"2026-08-31"},
+   ]},
+  {day:28, date:"Kamis, 29 Okt", isWknd:false, city:"Jember", cityDesc:"Kota Tembakau — Jember Fashion Carnaval", theme:"Jember & Pati — Kota Tembakau",
+   hotels:[
+    {name:"Urbanview Modern Guest House Jember",brand:"Urbanview",rooms:15,tipe:"NON SYARIAH",bookable:"2026-08-30"},
+    {name:"Urbanview Wisma Tentrem Syariah near RS KSH",brand:"Urbanview",rooms:15,tipe:"SYARIAH",bookable:"2026-08-30"},
+    {name:"RedDoorz @ Amala Heritage Bojonegoro",brand:"RedDoorz",rooms:11,tipe:"NON SYARIAH",bookable:"2026-08-27"},
+    {name:"Urbanview Adelia Residence Purwodadi City",brand:"Urbanview",rooms:14,tipe:"NON SYARIAH",bookable:"2026-09-25"},
+   ]},
+  // MINGGU 5: 30–31 Okt
+  {day:29, date:"Jumat, 30 Okt", isWknd:true, city:"Yogyakarta", cityDesc:"Kota Wisata Budaya No.1", theme:"🌟 Weekend Akhir Bulan — Yogyakarta Semua Brand",
+   hotels:[
+    {name:"Vibes Giory Yogyakarta by SANS Hotel",brand:"Sans",rooms:37,tipe:"NON SYARIAH",bookable:"2026-09-25"},
+    {name:"The Lavana Omah Putih Malioboro Tugu Yogyakarta",brand:"The Lavana",rooms:1,tipe:"NON SYARIAH",bookable:"2026-09-28"},
+    {name:"RedDoorz near Taman Merapi Yogyakarta",brand:"RedDoorz",rooms:18,tipe:"NON SYARIAH",bookable:"2026-07-30"},
+    {name:"Urbanview Hotel Pondok Helomi near Stadion Maguwo",brand:"Urbanview",rooms:22,tipe:"NON SYARIAH",bookable:"2026-07-31"},
+   ]},
+  {day:30, date:"Sabtu, 31 Okt", isWknd:true, city:"Batu", cityDesc:"Kota Apel — Grand Finale Oktober", theme:"🏁 Grand Finale Oktober — Batu & Malang",
+   hotels:[
+    {name:"Sans Elite Emerald Hotel Batu",brand:"Sans",rooms:98,tipe:"NON SYARIAH",bookable:"2026-08-30"},
+    {name:"The Lavana Signature Mulia Villa Batu",brand:"The Lavana",rooms:1,tipe:"NON SYARIAH",bookable:"2026-09-30"},
+    {name:"Urbanview Guest House Amalia Malang",brand:"Urbanview",rooms:22,tipe:"NON SYARIAH",bookable:"2026-09-29"},
+    {name:"RedDoorz @ Malang City Center",brand:"RedDoorz",rooms:18,tipe:"NON SYARIAH",bookable:"2026-07-02"},
+   ]},
+];
+
+const weeks=[
+  {label:"📅 Minggu 1 · 2–8 Oktober",days:[1,2,3,4,5,6,7]},
+  {label:"📅 Minggu 2 · 9–15 Oktober",days:[8,9,10,11,12,13,14]},
+  {label:"📅 Minggu 3 · 16–22 Oktober",days:[15,16,17,18,19,20,21]},
+  {label:"📅 Minggu 4 · 23–29 Oktober",days:[22,23,24,25,26,27,28]},
+  {label:"📅 Minggu 5 · 30–31 Oktober",days:[29,30]},
+];
+
+const tips=[
+  "Hari pertama Oktober! Yogyakarta selalu ramai di weekend — posting 5 brand sekaligus!",
+  "Sabtu Yogya sesi 2 — Tugu Malioboro & Prawirotaman sangat instagrammable untuk konten!",
+  "Batu Minggu — Sans Elite 98 kamar adalah hotel terbesar Blooming. Fokus kapasitas di FB Marketplace!",
+  "Jakarta Senin bisnis — Arcadia 80 kamar & New J&B 48 kamar. Targetkan corporate traveler!",
+  "Jakarta lanjutan — highlight hotel Syariah Atmawidjaja untuk segmen halal traveler!",
+  "Bogor Rabu — Glamping Seulawah Syariah & Kalaras Mini Zoo = konten unik yang viral!",
+  "Bandung Kamis — Cileunca & Dago sangat populer di kalangan anak muda. Konten TikTok!",
+  "Weekend Bali & Lombok — 2 destinasi international dalam 1 hari posting. Engagement tinggi!",
+  "Weekend Solo — 3 brand berbeda (Sans, Urbanview, RedPartner) = konten varied & menarik!",
+  "Malang Minggu — 4 hotel Blooming baru. Highlight Urbanview Amalia sebagai yang terbaru!",
+  "Semarang — Kota Lama + Grand Mundu 30 kamar = kombinasi heritage & hotel modern!",
+  "Sukabumi — 5 hotel pantai Ujunggenteng & Ciletuh. Konten wisata alam pesisir yang unik!",
+  "Banyumas/Purwokerto — Pool Villa Kika & Villa Samafa The Lavana sangat instagrammable!",
+  "Batam — 4 Urbanview sekaligus! Brand premium di kepulauan = konten wisata berbeda!",
+  "Weekend Pangandaran — 3 hotel pantai selatan Jabar. Audiens pencinta pantai sangat aktif!",
+  "Weekend Dieng/Wonosobo — Hidden gem plateau tertinggi Jawa. Konten glamping viral!",
+  "Karanganyar — Tawangmangu, Solo Raya & Klaten = 1 kawasan wisata yang lengkap!",
+  "Medan & sekitar — Hotel Bumi Malaya 54 kamar = terbesar Blooming di Sumatera!",
+  "Lampung — Pantai Kalianda + Airan Raya = mix wisata pantai & kota untuk konten beragam!",
+  "Makassar & Sulawesi — Gerbang Indonesia Timur yang jarang diposting = low competition!",
+  "Yogya mid-Oktober — highlight The Signature Living & Aliya Co Living untuk millennial!",
+  "Weekend Bandung Dago & Lembang — The Lavana Villa Premium = konten luxury yang viral!",
+  "Weekend Bogor — The Lavana 3 villa + Derawan Beach Cottage = kontras yang menarik!",
+  "Yogya syariah heritage — 4 The Lavana Villa sekaligus = sesi khusus brand premium!",
+  "Madiun & Kediri — Sans Vibes + Kampung Inggris Pare = 2 hidden gem Jawa Timur!",
+  "Pontianak & Kalimantan — Hotel Syariah di pulau Kalimantan = sangat jarang diposting!",
+  "Pasuruan & Tulungagung — 4 hotel Syariah semuanya! Segmen halal traveler khusus!",
+  "Jember & Grobogan — Urbanview duo kota tier-2 = engagement lokal yang tinggi!",
+  "Weekend akhir bulan Yogya — semua 5 brand hadir. Tutup Oktober dengan kota terfavorit!",
+  "🏁 Grand Finale Oktober! Sans Elite 98 kamar + The Lavana + Urbanview + RedDoorz Batu-Malang!",
+];
+
+const pembukaMsgs=[
+{lbl:"Pesan 1 — Pengumuman Program Oktober (1 Okt, H-1)",note:"Kirim malam tanggal 1 Oktober sebelum program mulai.",
+msg:`🌸 *PROGRAM BLOOMING PROPERTY — OKTOBER 2026!*
+━━━━━━━━━━━━━━━━━━━━
+
+Halo RedSeller Tim Luqman! 👋
+
+Besok, *Jumat 2 Oktober 2026*, kita mulai program posting hotel baru spesial!
+
+🏨 *BLOOMING PROPERTY DAILY POSTING — OKTOBER 2026*
+📅 2 Oktober – 31 Oktober 2026 _(30 hari posting!)_
+
+━━━━━━━━━━━━━━━━━━━━
+*Apa yang spesial di Oktober ini?*
+
+🆕 *Hotel-hotel BLOOMING PROPERTY*
+Hotel-hotel baru yang baru bergabung dengan RedDoorz Group dalam 3 bulan terakhir (Juli–September 2026)! Total *126 properti baru* dari berbagai brand:
+✅ RedDoorz (47) · Urbanview (29)
+✅ RedPartner/Mitra (21) · The Lavana (21) · Sans Hotel (8)
+
+📍 *Format Posting Baru — 4 Hotel per Hari, Kota SAMA*
+Setiap hari kita fokus *1 kota dengan 4 hotel* sekaligus — lebih terarah, konten lebih konsisten & profesional!
+
+🌟 *Weekend = Kota Wisata Favorit*
+Setiap Jumat & Sabtu, hotel yang diposting berasal dari kota-kota wisata terpopuler Indonesia!
+
+Info lengkap menyusul besok pagi ya! 💪🔴
+#BloomingProperty #Oktober2026 #TimMentorLuqman`},
+{lbl:"Pesan 2 — Pembukaan Resmi (2 Okt, Pagi)",note:"Kirim pagi hari pertama sebelum mengirim rekomendasi hotel.",
+msg:`🎉 *BLOOMING PROPERTY OKTOBER 2026 — RESMI DIMULAI!*
+━━━━━━━━━━━━━━━━━━━━
+
+Selamat pagi RedSeller Tim Luqman! ☀️
+
+*Jumat, 2 Oktober 2026* — hari pertama program Blooming Property Oktober!
+
+📋 *TUGAS KAMU SETIAP HARI:*
+
+1️⃣ *Posting 4 Hotel dalam 1 Kota*
+Mentor kirimkan 4 hotel blooming dari 1 kota yang sama setiap harinya. Konten lebih fokus & terarah!
+
+2️⃣ *Upload ke Sosial Media*
+📲 FB Grup · FB Marketplace · Instagram · TikTok
+
+3️⃣ *Ambil Foto dari Aplikasi*
+Screenshot foto kamar, fasilitas & harga langsung dari app RedDoorz — siap dipakai!
+
+4️⃣ *Cantumkan Link Booking*
+Wajib ada di caption agar calon tamu bisa langsung booking! 💰
+
+━━━━━━━━━━━━━━━━━━━━
+*Kenapa format baru "4 hotel 1 kota" lebih efektif?*
+
+📍 Konten lebih *terfokus* — audiens yang mencari hotel di 1 kota langsung dapat banyak pilihan dari kamu
+📈 Lebih *mudah viral* — orang yang mau ke kota itu akan menyimpan & share postinganmu
+💼 Lebih *profesional* — terlihat seperti "travel guide" bukan sekadar iklan
+
+Hari ini kita mulai dari *Yogyakarta* — kota wisata No.1 Indonesia! 🎭
+
+Rekomendasi hotel menyusul! 👇
+Semangat! 💪🔴 #BloomingProperty #Hari1 #TimMentorLuqman`},
+{lbl:"Pesan 3 — Tips Caption per Brand Blooming",note:"Kirim siang hari pertama atau kedua.",
+msg:`💡 *TIPS CAPTION UNTUK BLOOMING PROPERTY!*
+━━━━━━━━━━━━━━━━━━━━
+
+RedSeller! Hotel Blooming = *hotel BARU* yang baru bergabung bulan lalu. Manfaatkan ini di caption kamu! 👇
+
+━━━━━━━━━━━━━━━━━━━━
+🔴 *RedDoorz & RedPartner/Mitra*
+Caption: Tekankan lokasi strategis dan harga terjangkau
+_"🏨 Hotel baru di [KOTA]! [NAMA] baru bergabung bulan ini — harga terbaik dijamin! Mulai Rp [HARGA]/malam 📲 [LINK]"_
+
+🟣 *Urbanview*
+Caption: Highlight kenyamanan & fasilitas modern
+_"✨ Urbanview Hotel terbaru di [KOTA]! [NAMA] — kamar modern, view menawan. Booking sekarang! [LINK]"_
+
+🟡 *The Lavana*
+Caption: Fokus keunikan villa & pengalaman eksklusif
+_"🏡 Villa tersembunyi di [KOTA]! The Lavana [NAMA] — private, eksklusif & instagrammable! [LINK]"_
+
+🔵 *Sans Hotel*
+Caption: Highlight design & lifestyle
+_"🌟 Sans Hotel terbaru di [KOTA]! [NAMA] — stylish, modern & strategis. Staycation hits! [LINK]"_
+
+━━━━━━━━━━━━━━━━━━━━
+⏰ *Waktu terbaik posting:*
+🌟 Jumat & Sabtu (Weekend) = jam 07.00–09.00 & 20.00–21.30 WIB
+📆 Hari biasa = jam 07.00–09.00 & 16.00–18.00 WIB
+
+Hotel baru = audiens penasaran = engagement lebih tinggi! 💪
+#BloomingProperty #TipsPosting #TimMentorLuqman`},
+];
+
+function buildPagiMsg(d){
+  const sy = d.hotels.filter(h=>h.tipe==='SYARIAH').length;
+  const brands = [...new Set(d.hotels.map(h=>h.brand))];
+  return `🌅 *Selamat pagi, RedSeller Tim Luqman!* ☀️
+━━━━━━━━━━━━━━━━━━━━
+*Hari ke-${d.day} — ${d.date}*
+${d.isWknd?'🌟 *WEEKEND — Kota Wisata Favorit!*':'📅 Posting harian Blooming Property'}
+
+📍 *Kota Hari Ini: ${d.city}*
+${d.cityDesc}
+
+🏨 *4 Hotel Blooming Property:*
+${d.hotels.map((h,i)=>`${i+1}️⃣ *${h.name}*
+   🏷️ ${BL[h.brand]||h.brand} · ${h.rooms} kamar · ${h.tipe==='SYARIAH'?'🕌 Syariah':'Non Syariah'}
+   📅 Bookable sejak: ${h.bookable}`).join('\n\n')}
+
+━━━━━━━━━━━━━━━━━━━━
+💡 *Strategi hari ini:*
+${tips[d.day-1]}
+
+${sy>0?`🕌 *Catatan:* ${sy} hotel Syariah — cantumkan label Halal/Syariah di caption!\n`:''}
+📲 Posting ke: *FB Grup · FB Marketplace · Instagram · TikTok*
+Link booking wajib ada di setiap postingan! 💰
+
+Semangat! 💪🔴 #BloomingProperty #Hari${d.day} #${d.city.replace(' ','')} #TimMentorLuqman`;}
+
+function buildSoreMsg(d){
+  return`🌆 *Reminder Sore — ${d.date}* 📲
+━━━━━━━━━━━━━━━━━━━━
+Hei RedSeller! Sudah posting 4 hotel *${d.city}* hari ini? 👀
+
+${d.isWknd?'🌟 Ini hari WEEKEND — waktu terbaik orang cari hotel wisata!':''}
+
+4 hotel yang harus sudah diposting:
+${d.hotels.map((h,i)=>`${i+1}. ${h.name}`).join('\n')}
+
+Sore & malam = jam paling aktif audiens!
+Kalau belum, gas sekarang! 💪
+
+#BloomingProperty #${d.city.replace(' ','')} #TimMentorLuqman`;}
+
+function buildMalamMsg(d){
+  const nxt = schedule.find(x=>x.day===d.day+1);
+  return`🌙 *Reminder Malam — ${d.date}*
+━━━━━━━━━━━━━━━━━━━━
+RedSeller! Checklist sebelum tidur:
+
+☑ 4 hotel ${d.city} sudah diposting? ✅
+☑ Sudah cross-post ke semua platform? ✅
+☑ Link booking ada di caption? ✅
+
+${d.day===30?`🏁 *INI HARI TERAKHIR OKTOBER 2026!*
+
+Terima kasih sudah konsisten posting 30 hari selama Oktober!
+126 hotel Blooming Property sudah kamu promosikan ke seluruh Indonesia 🙏
+
+Terus posting setelah program selesai — komisi bisa masuk kapan saja!
+Mentor bangga sama kalian semua! 💪🔴
+#BloomingProperty #SelesaiDenganBangga #TimMentorLuqman`:`${nxt?`Besok H${nxt.day}: Kota *${nxt.city}* — ${nxt.theme}${nxt.isWknd?' 🌟 WEEKEND!':''}\nSiapkan kontennya ya! 🌸`:''}
+
+Istirahat cukup, besok gas lagi! 💪
+#BloomingProperty #H${d.day} #TimMentorLuqman`}`;}
+
+// ── BUILD ──
+function switchMain(id){
+  document.querySelectorAll('.msec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.mnav').forEach(b=>b.classList.remove('active'));
+  document.getElementById('msec-'+id).classList.add('active');
+  document.getElementById('mn-'+id).classList.add('active');
+}
+function switchWa(id,btn){
+  document.querySelectorAll('.wp').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.wt').forEach(b=>b.classList.remove('active'));
+  document.getElementById('wp-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+function tog(day){
+  const b=document.getElementById('db-'+day),ch=document.getElementById('dch-'+day);
+  const o=b.classList.toggle('open');ch.classList.toggle('open',o);
+}
+function toggleAll(o){
+  schedule.forEach(d=>{
+    const b=document.getElementById('db-'+d.day),ch=document.getElementById('dch-'+d.day);
+    if(o){b.classList.add('open');ch.classList.add('open');}
+    else{b.classList.remove('open');ch.classList.remove('open');}
+  });
+}
+
+function buildJadwal(){
+  const c=document.getElementById('jadwal-cont');
+  weeks.forEach(wk=>{
+    const wd=document.createElement('div');wd.className='week-sep';
+    wd.innerHTML=`<div class="ws-line"></div><div class="ws-txt">${wk.label}</div><div class="ws-line"></div>`;
+    c.appendChild(wd);
+    schedule.filter(d=>wk.days.includes(d.day)).forEach(d=>{
+      const card=document.createElement('div');
+      card.className='dc'+(d.isWknd?' weekend':'');
+      const sy=d.hotels.filter(h=>h.tipe==='SYARIAH').length;
+      card.innerHTML=`
+        <div class="dc-head" onclick="tog(${d.day})">
+          <div class="dc-num">H${d.day}</div>
+          <div class="dc-date">${d.date}</div>
+          <div class="dc-city">📍 ${d.city}</div>
+          ${d.isWknd?'<div class="wknd-badge">🌟 Weekend Wisata</div>':''}
+          ${sy>0?`<div class="wknd-badge" style="background:#ECFAF4;border-color:#A5DEBA;color:#065528;">🕌 Ada Syariah</div>`:''}
+          <i class="ti ti-chevron-down chev" id="dch-${d.day}"></i>
+        </div>
+        <div class="dc-body" id="db-${d.day}">
+          <div style="padding:8px 12px 0;font-size:11px;color:var(--muted);">${d.theme} · ${d.cityDesc}</div>
+          <div class="hotel-list">
+            ${d.hotels.map((h,i)=>`<div class="hr ${BC[h.brand]||'brd'}">
+              <div class="hr-num">${i+1}</div>
+              <div class="hr-body">
+                <div class="hr-top">
+                  <span class="hr-brand">${BL[h.brand]||h.brand}</span>
+                  <span class="hr-tipe ${h.tipe==='SYARIAH'?'tsy':'tns'}">${h.tipe==='SYARIAH'?'🕌 Syariah':'Non Syariah'}</span>
+                </div>
+                <div class="hr-name">${h.name}</div>
+                <div class="hr-meta">
+                  <span class="hr-rooms">🛏️ ${h.rooms} kamar</span>
+                  <span class="hr-date">📅 Bookable: ${h.bookable}</span>
+                </div>
+              </div>
+            </div>`).join('')}
+          </div>
+          <div class="dc-foot">
+            <div class="tip-box">💡 ${tips[d.day-1]}</div>
+            <button class="cp-btn" onclick="cpDay(${d.day},this)"><i class="ti ti-copy"></i> Salin WA</button>
+          </div>
+        </div>`;
+      c.appendChild(card);
+    });
+  });
+}
+
+function buildPembuka(){
+  const c=document.getElementById('ws-pembuka');
+  pembukaMsgs.forEach((m,i)=>{
+    const id='pm-'+i;
+    const div=document.createElement('div');div.className='wb';
+    div.innerHTML=`<div class="wblabel">📢 ${m.lbl}</div>
+    <div class="bubble" id="${id}">${m.msg}</div>
+    <button class="wa-cp" onclick="wcp('${id}',this)"><i class="ti ti-copy"></i> Salin pesan</button>
+    <div class="wa-note">💡 ${m.note}</div>`;
+    c.appendChild(div);
+  });
+}
+
+function buildHarian(){
+  const dpr=document.getElementById('dprow');
+  const dpc=document.getElementById('dpcont');
+  schedule.forEach((d,i)=>{
+    const btn=document.createElement('button');
+    btn.className='dpick'+(d.isWknd?' wknd':'')+(i===0?' active':'');
+    btn.textContent=`H${d.day}`;
+    btn.onclick=()=>{
+      document.querySelectorAll('.dpick').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.dpanel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('dp-'+d.day).classList.add('active');
+    };
+    dpr.appendChild(btn);
+    const panel=document.createElement('div');
+    panel.className='dpanel'+(i===0?' active':'');
+    panel.id='dp-'+d.day;
+    const times=[
+      {k:'p',cls:'pagi',lbl:`🌅 Pagi — 07.00 WIB`,msg:buildPagiMsg(d)},
+      {k:'s',cls:'sore',lbl:`🌆 Sore — 16.00 WIB`,msg:buildSoreMsg(d)},
+      {k:'m',cls:'malam',lbl:`🌙 Malam — 20.30 WIB`,msg:buildMalamMsg(d)},
+    ];
+    panel.innerHTML=`<div class="dpanel-head">${d.isWknd?'🌟 ':''}Hari ${d.day} · ${d.date} · 📍 ${d.city}</div>
+    <div class="wa-stack">${times.map(t=>`<div class="wb">
+      <div class="wblabel ${t.cls}">${t.lbl}</div>
+      <div class="bubble" id="dw-${d.day}-${t.k}">${t.msg}</div>
+      <button class="wa-cp" onclick="wcp('dw-${d.day}-${t.k}',this)"><i class="ti ti-copy"></i> Salin pesan</button>
+    </div>`).join('')}</div>`;
+    dpc.appendChild(panel);
+  });
+}
+
+function cpDay(day,btn){cp2(buildPagiMsg(schedule.find(x=>x.day===day)),btn);}
+function wcp(id,btn){cp2(document.getElementById(id).innerText,btn);}
+function cp2(text,btn){
+  navigator.clipboard.writeText(text).then(()=>{
+    const ori=btn.innerHTML;
+    btn.classList.add('ok');btn.innerHTML='<i class="ti ti-check"></i> Tersalin!';
+    setTimeout(()=>{btn.classList.remove('ok');btn.innerHTML=ori;},2200);
+  }).catch(()=>{
+    const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();
+    document.execCommand('copy');document.body.removeChild(ta);
+    const ori=btn.innerHTML;btn.innerHTML='<i class="ti ti-check"></i> Tersalin!';
+    setTimeout(()=>{btn.innerHTML=ori;},2200);
+  });
+}
+
+buildJadwal(); buildPembuka(); buildHarian();
+</script>
+</body>
+</html>
